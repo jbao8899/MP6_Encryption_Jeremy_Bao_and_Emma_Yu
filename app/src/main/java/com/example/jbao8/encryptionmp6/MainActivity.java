@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity Class";
+    private boolean makeUpperCase = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
