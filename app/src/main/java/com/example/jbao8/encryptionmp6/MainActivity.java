@@ -21,7 +21,10 @@ public class MainActivity extends AppCompatActivity {
         EditText input = findViewById(R.id.Input);
         TextView output = findViewById(R.id.Output);
         Log.d(TAG, "function ran");
-        CharSequence toModify = input.getText();
+        String toModify = input.getText().toString();
+        if (BooleansForSettings.toCapitalizeAfterRotation) {
+            toModify = toModify.toUpperCase();
+        }
         output.setText(toModify);
     }
 }

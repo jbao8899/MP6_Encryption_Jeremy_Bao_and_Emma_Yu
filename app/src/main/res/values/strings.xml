@@ -5,5 +5,5 @@
     <string name="output">Output</string>
     <string name="make_text_uppercase">Make Text Uppercase</string>
     <string name="currently_off">Currently off</string>
-    <string name="currently_on">Currently off</string>
+    <string name="currently_on">Currently on</string>
 </resources>

@@ -12,16 +12,6 @@ import android.widget.TextView;
  */
 public class Settings extends AppCompatActivity {
     private final String TAG = "Settings Class";
-    private boolean makeUpperCase = false;
-
-    public boolean isMakeUpperCase() {
-        return makeUpperCase;
-    }
-
-    public void setMakeUpperCase(boolean makeUpperCase) {
-        this.makeUpperCase = makeUpperCase;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,11 +19,11 @@ public class Settings extends AppCompatActivity {
     }
     public void toggleUpperCase(View transformButton) {
         TextView indicator = findViewById(R.id.StatusIndicatorForUpperCase);
-        if (!makeUpperCase) {
-            makeUpperCase = true;
+        if (!BooleansForSettings.toCapitalizeAfterRotation) {
+            BooleansForSettings.toCapitalizeAfterRotation = true;
             indicator.setText(R.string.currently_on);
         } else {
-            makeUpperCase = false;
+            BooleansForSettings.toCapitalizeAfterRotation = false;
             indicator.setText(R.string.currently_off);
         }
     }
