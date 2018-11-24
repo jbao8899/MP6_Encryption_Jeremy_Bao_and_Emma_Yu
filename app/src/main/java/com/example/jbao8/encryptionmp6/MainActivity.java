@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import strman.Strman;
+
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity Class";
     private boolean makeUpperCase = false;
@@ -23,11 +25,22 @@ public class MainActivity extends AppCompatActivity {
         TextView output = findViewById(R.id.Output);
         Log.d(TAG, "function ran");
         String toModify = input.getText().toString();
-        if (BooleansForSettings.toCapitalizeAfterRotation) {
+        if (BooleansForSettings.isToCapitalizeAfterRotation()) {
             toModify = toModify.toUpperCase();
+        }
+        if (BooleansForSettings.isAppendOrNot()) {
+            String[] words = toModify.split(" ");
+            toModify = "";
+            for (String word : words) {
+                if (word.equals(BooleansForSettings.getWhenToAppend())) {
+                    word += BooleansForSettings.getToAppend();
+                }
+                toModify = toModify + word;
+            }
         }
         output.setText(toModify);
     }
+    // Library causing failures?
     public void goToSettings(View v){
         Intent myIntent = new Intent(getBaseContext(), Settings.class);
         startActivity(myIntent);

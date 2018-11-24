@@ -8,4 +8,11 @@
     <string name="currently_on">Currently on</string>
     <string name="settings">Settings</string>
     <string name="go_to_main_screen">Go To Main Screen</string>
+    <string name="append_string_to_word">Append String to Word</string>
+    <string name="string">String:</string>
+    <string name="what_will_be_appended">What will be appended</string>
+    <string name="what_to_append">What to append?</string>
+    <string name="word">Word:</string>
+    <string name="after_which_word">After which word?</string>
+    <string name="toggle_appending_string_to_word">Toggle Appending String To Word</string>
 </resources>

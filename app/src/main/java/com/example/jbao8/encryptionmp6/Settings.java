@@ -20,12 +20,27 @@ public class Settings extends AppCompatActivity {
     }
     public void toggleUpperCase(View transformButton) {
         TextView indicator = findViewById(R.id.StatusIndicatorForUpperCase);
-        if (!BooleansForSettings.toCapitalizeAfterRotation) {
-            BooleansForSettings.toCapitalizeAfterRotation = true;
+        if (!BooleansForSettings.isToCapitalizeAfterRotation()) {
+            BooleansForSettings.setToCapitalizeAfterRotation(true);
             indicator.setText(R.string.currently_on);
         } else {
-            BooleansForSettings.toCapitalizeAfterRotation = false;
+            BooleansForSettings.setToCapitalizeAfterRotation(false);
             indicator.setText(R.string.currently_off);
+        }
+    }
+    public void appendText(View appendButton) {
+        EditText textToAppend = findViewById(R.id.textToAppend);
+        EditText wordAfterWhichtoAppend = findViewById(R.id.wordAfterWhichtoAppend);
+        if (BooleansForSettings.isAppendOrNot()) {
+            BooleansForSettings.setAppendOrNot(false);
+            BooleansForSettings.setToAppend("");
+            BooleansForSettings.setWhenToAppend("");
+            textToAppend.setText(R.string.what_to_append);
+            wordAfterWhichtoAppend.setText(R.string.after_which_word);
+        } else {
+            BooleansForSettings.setAppendOrNot(true);
+            BooleansForSettings.setToAppend(textToAppend.getText().toString());
+            BooleansForSettings.setWhenToAppend(wordAfterWhichtoAppend.getText().toString());
         }
     }
     public void goToMain(View v) {
