@@ -1,5 +1,6 @@
 package com.example.jbao8.encryptionmp6;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,5 +27,9 @@ public class MainActivity extends AppCompatActivity {
             toModify = toModify.toUpperCase();
         }
         output.setText(toModify);
+    }
+    public void goToSettings(View v){
+        Intent myIntent = new Intent(getBaseContext(), Settings.class);
+        startActivity(myIntent);
     }
 }

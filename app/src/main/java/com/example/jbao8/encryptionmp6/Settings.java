@@ -1,5 +1,6 @@
 package com.example.jbao8.encryptionmp6;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +28,8 @@ public class Settings extends AppCompatActivity {
             indicator.setText(R.string.currently_off);
         }
     }
-    //How to call method in this class from MainActivity? Can't make mathod static and still use
-    //find view by ID.
+    public void goToMain(View v) {
+        Intent myIntent = new Intent(getBaseContext(), MainActivity.class);
+        startActivity(myIntent);
+    }
 }

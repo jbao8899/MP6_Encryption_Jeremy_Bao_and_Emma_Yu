@@ -6,4 +6,6 @@
     <string name="make_text_uppercase">Make Text Uppercase</string>
     <string name="currently_off">Currently off</string>
     <string name="currently_on">Currently on</string>
+    <string name="settings">Settings</string>
+    <string name="go_to_main_screen">Go To Main Screen</string>
 </resources>
