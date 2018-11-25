@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import strman.Strman;
-
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity Class";
     private boolean makeUpperCase = false;
