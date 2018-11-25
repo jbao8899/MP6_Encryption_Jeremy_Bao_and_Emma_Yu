@@ -18,7 +18,7 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
     }
-    public void toggleUpperCase(View transformButton) {
+    public void toggleUpperCase(View transformButton) { //indicator status not being preserved?
         TextView indicator = findViewById(R.id.StatusIndicatorForUpperCase);
         if (!BooleansForSettings.isToCapitalizeAfterRotation()) {
             BooleansForSettings.setToCapitalizeAfterRotation(true);
@@ -28,17 +28,20 @@ public class Settings extends AppCompatActivity {
             indicator.setText(R.string.currently_off);
         }
     }
-    public void appendText(View appendButton) {
+    public void appendText(View appendButton) { // not working?
         EditText textToAppend = findViewById(R.id.textToAppend);
         EditText wordAfterWhichtoAppend = findViewById(R.id.wordAfterWhichtoAppend);
+        TextView statusIndicatorForAppending = findViewById(R.id.statusIndicatorForAppending);
         if (BooleansForSettings.isAppendOrNot()) {
             BooleansForSettings.setAppendOrNot(false);
+            statusIndicatorForAppending.setText(R.string.currently_off);
             BooleansForSettings.setToAppend("");
             BooleansForSettings.setWhenToAppend("");
             textToAppend.setText(R.string.what_to_append);
             wordAfterWhichtoAppend.setText(R.string.after_which_word);
         } else {
             BooleansForSettings.setAppendOrNot(true);
+            statusIndicatorForAppending.setText(R.string.currently_on);
             BooleansForSettings.setToAppend(textToAppend.getText().toString());
             BooleansForSettings.setWhenToAppend(wordAfterWhichtoAppend.getText().toString());
         }
