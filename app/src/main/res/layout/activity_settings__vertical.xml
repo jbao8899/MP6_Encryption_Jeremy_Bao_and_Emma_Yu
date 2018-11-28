@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Settings_Vertical">
+
+    <TextView
+        android:id="@+id/settingsTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/settings"
+        android:gravity="center_horizontal"
+        android:textSize="36sp" />
+
+    <Button
+        android:id="@+id/capitalize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="toggleUpperCase"
+        android:text="@string/make_text_uppercase" />
+
+    <TextView
+        android:id="@+id/capIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/currently_off"
+        android:gravity="center_horizontal"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/appendButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/append_string_to_word" />
+
+    <TextView
+        android:id="@+id/appendingIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/currently_off"
+        android:gravity="center_horizontal"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/what_to_append" />
+
+    <EditText
+        android:id="@+id/appendFollowingThisWord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/after_which_word" />
+
+    <Button
+        android:id="@+id/rotateButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/encrypt_input_with_simple_cipher" />
+
+    <TextView
+        android:id="@+id/rotationIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/currently_off"
+        android:gravity="center_horizontal"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/howMuchToRotate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:text="@string/how_much_to_rotate_text_1024_to_1024" />
+
+    <Button
+        android:id="@+id/goToMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="goToMain"
+        android:text="@string/go_to_main_screen" />
+
+</LinearLayout>

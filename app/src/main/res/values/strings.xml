@@ -3,7 +3,7 @@
     <string name="input">Input</string>
     <string name="encrypt">Encrypt</string>
     <string name="output">Output</string>
-    <string name="make_text_uppercase">Make Text Uppercase</string>
+    <string name="make_text_uppercase">Make Text Uppercase Before Rotation</string>
     <string name="currently_off">Currently off</string>
     <string name="currently_on">Currently on</string>
     <string name="settings">Settings</string>
@@ -15,4 +15,6 @@
     <string name="word">Word:</string>
     <string name="after_which_word">After which word?</string>
     <string name="toggle_appending_string_to_word">Toggle Appending String To Word</string>
+    <string name="encrypt_input_with_simple_cipher">Encrypt Input With Simple Cipher</string>
+    <string name="how_much_to_rotate_text_1024_to_1024">How much to rotate text (-1024 to 1024)?</string>
 </resources>

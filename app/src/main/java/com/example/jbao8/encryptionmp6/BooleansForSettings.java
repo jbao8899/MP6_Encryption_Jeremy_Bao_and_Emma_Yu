@@ -5,6 +5,23 @@ public class BooleansForSettings {
     private static String toAppend = "";
     private static String whenToAppend = "";
     private static boolean appendOrNot = false;
+    private static String toModify = "";
+    private static String output = "";
+    public static String getOutput() {
+        return output;
+    }
+
+    public static void setOutput(String output) {
+        BooleansForSettings.output = output;
+    }
+
+    public static String getToModify() {
+        return toModify;
+    }
+
+    public static void setToModify(String toModify) {
+        BooleansForSettings.toModify = toModify;
+    }
 
     public static String getWhenToAppend() {
         return whenToAppend;

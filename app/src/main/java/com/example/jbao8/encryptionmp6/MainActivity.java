@@ -10,37 +10,41 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity Class";
-    private boolean makeUpperCase = false;
+    private boolean hasStarted = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG,"Main Activity started");
+        if (hasStarted) {
+            EditText input = findViewById(R.id.Input);
+            input.setText(BooleansForSettings.getToModify());
+            TextView output = findViewById(R.id.Output);
+            output.setText(BooleansForSettings.getOutput());
+        }
         setContentView(R.layout.activity_main);
     }
     public void transformText(View transformButton) {
+        hasStarted = true;
         //Context context = getApplicationContext();
         EditText input = findViewById(R.id.Input);
         TextView output = findViewById(R.id.Output);
-        Log.d(TAG, "function ran");
-        String toModify = input.getText().toString();
+        Log.d(TAG, "transformText function ran");
+        BooleansForSettings.setToModify(input.getText().toString());
         if (BooleansForSettings.isToCapitalizeAfterRotation()) {
-            toModify = toModify.toUpperCase();
+            BooleansForSettings.setToModify(BooleansForSettings.getToModify().toUpperCase());
         }
-        if (BooleansForSettings.isAppendOrNot()) {
-            String[] words = toModify.split(" ");
-            toModify = "";
-            for (String word : words) {
-                if (word.equals(BooleansForSettings.getWhenToAppend())) {
-                    word += BooleansForSettings.getToAppend();
-                }
-                toModify = toModify + word;
-            }
-        }
-        output.setText(toModify);
+        BooleansForSettings.setOutput(BooleansForSettings.getToModify());
+        output.setText(BooleansForSettings.getOutput());
     }
     // Library causing failures?
     public void goToSettings(View v){
-        Intent myIntent = new Intent(getBaseContext(), Settings.class);
+        hasStarted = true;
+        EditText input = findViewById(R.id.Input);
+        BooleansForSettings.setToModify(input.getText().toString());
+        TextView output = findViewById(R.id.Output);
+        BooleansForSettings.setOutput(output.getText().toString());
+        Intent myIntent = new Intent(getBaseContext(), Settings_Vertical.class); // not working?
         startActivity(myIntent);
     }
 }
