@@ -1,5 +1,6 @@
 package com.example.jbao8.encryptionmp6;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,12 +8,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
 public class Settings_Vertical extends AppCompatActivity {
     private final String TAG = "Settings_Vertical Class";
-
+    private final int MIN_LENGTH_OF_INPUT = 5;
+    private final int MAX_LENGTH_OF_INPUT = 10;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "have switched to Settings_Vertical activity");
@@ -54,6 +57,16 @@ public class Settings_Vertical extends AppCompatActivity {
         EditText whatToAppend = findViewById(R.id.whatToAppend);
         EditText appendFollowingThisWord = findViewById(R.id.appendFollowingThisWord);
         if (!BooleansForSettings.isAppendOrNot()) {
+            if (whatToAppend.getText().toString().length() < MIN_LENGTH_OF_INPUT
+                    || whatToAppend.getText().toString().length() > MAX_LENGTH_OF_INPUT) {
+                Log.d(TAG, "invalid append string");
+                int duration = Toast.LENGTH_SHORT;
+                Context context = getApplicationContext();
+                Toast errorToast = Toast.makeText(context, "String to append must have length" +
+                        " between 5 and 10", duration);
+                errorToast.show();
+                return;
+            }
             BooleansForSettings.setAppendOrNot(true);
             BooleansForSettings.setToAppend(whatToAppend.getText().toString());
             BooleansForSettings.setWordToAppendAfter(appendFollowingThisWord.getText().toString());
