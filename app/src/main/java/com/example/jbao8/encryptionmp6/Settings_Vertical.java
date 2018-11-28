@@ -55,7 +55,7 @@ public class Settings_Vertical extends AppCompatActivity {
         Log.d(TAG, "toggleAppendStringToWord has run");
         TextView indicator = findViewById(R.id.appendingIndicator);
         EditText whatToAppend = findViewById(R.id.whatToAppend);
-        EditText appendFollowingThisWord = findViewById(R.id.appendFollowingThisWord);
+        EditText appendAfterThisWord = findViewById(R.id.appendFollowingThisWord);
         if (!BooleansForSettings.isAppendOrNot()) {
             if (whatToAppend.getText().toString().length() < MIN_LENGTH_OF_INPUT
                     || whatToAppend.getText().toString().length() > MAX_LENGTH_OF_INPUT) {
@@ -67,13 +67,25 @@ public class Settings_Vertical extends AppCompatActivity {
                 errorToast.show();
                 return;
             }
+            if (appendAfterThisWord.getText().toString().length() < MIN_LENGTH_OF_INPUT
+                    || appendAfterThisWord.getText().toString().length() > MAX_LENGTH_OF_INPUT) {
+                Log.d(TAG, "invalid word to append after string");
+                int duration = Toast.LENGTH_SHORT;
+                Context context = getApplicationContext();
+                Toast errorToast = Toast.makeText(context, "word to append after must have" +
+                        " length between 5 and 10", duration);
+                errorToast.show();
+                return;
+            }
             BooleansForSettings.setAppendOrNot(true);
             BooleansForSettings.setToAppend(whatToAppend.getText().toString());
-            BooleansForSettings.setWordToAppendAfter(appendFollowingThisWord.getText().toString());
+            BooleansForSettings.setWordToAppendAfter(appendAfterThisWord.getText().toString());
             indicator.setText(R.string.currently_on);
         } else {
             BooleansForSettings.setAppendOrNot(false);
             BooleansForSettings.setToAppend("");
+            whatToAppend.setText(R.string.what_to_append);
+            appendAfterThisWord.setText(R.string.after_which_word);
             BooleansForSettings.setWordToAppendAfter("");
             indicator.setText(R.string.currently_off);
         }
