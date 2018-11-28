@@ -53,7 +53,24 @@ public class MainActivity extends AppCompatActivity {
         output.setText(BooleansForSettings.getOutput());
     }
     public void decryptText(View decryptButton) {
-        hasStarted = true;Log.d(TAG, "decryptText function ran");
+        hasStarted = true;
+        Log.d(TAG, "decryptText function ran");
+        EditText input = findViewById(R.id.Input);
+        TextView output = findViewById(R.id.Output);
+        BooleansForSettings.setToModify(input.getText().toString());
+        if (BooleansForSettings.isToCapitalizeAfterRotation()) {
+            BooleansForSettings.setToModify(BooleansForSettings.getToModify().toLowerCase());
+        }
+        if (BooleansForSettings.isAppendOrNot()) {
+            String[] words = BooleansForSettings.getToModify().split(BooleansForSettings.getToAppend()); // too long?
+            String stringWithAppendedRemoved = "";
+            for (String word : words) {
+                stringWithAppendedRemoved = stringWithAppendedRemoved + word;
+            }
+            BooleansForSettings.setToModify(stringWithAppendedRemoved);
+        }
+        BooleansForSettings.setOutput(BooleansForSettings.getToModify());
+        output.setText(BooleansForSettings.getOutput());
     }
     // Library causing failures?
     public void goToSettings(View v){
