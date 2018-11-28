@@ -34,6 +34,7 @@
         android:id="@+id/appendButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="toggleAppendStringToWord"
         android:text="@string/append_string_to_word" />
 
     <TextView

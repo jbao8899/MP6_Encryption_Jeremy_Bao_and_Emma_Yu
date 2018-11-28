@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     // Library causing failures?
     public void goToSettings(View v){
         hasStarted = true;
+        Log.d(TAG,"goToSettings has run");
         EditText input = findViewById(R.id.Input);
         BooleansForSettings.setToModify(input.getText().toString());
         TextView output = findViewById(R.id.Output);
