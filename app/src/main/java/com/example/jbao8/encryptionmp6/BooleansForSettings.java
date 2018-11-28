@@ -3,7 +3,7 @@ package com.example.jbao8.encryptionmp6;
 public class BooleansForSettings {
     private static boolean toCapitalizeAfterRotation = false;
     private static String toAppend = "";
-    private static String whenToAppend = "";
+    private static String wordToAppendAfter = "";
     private static boolean appendOrNot = false;
     private static String toModify = "";
     private static String output = "";
@@ -23,12 +23,12 @@ public class BooleansForSettings {
         BooleansForSettings.toModify = toModify;
     }
 
-    public static String getWhenToAppend() {
-        return whenToAppend;
+    public static String getWordToAppendAfter() {
+        return wordToAppendAfter;
     }
 
-    public static void setWhenToAppend(String whenToAppend) {
-        BooleansForSettings.whenToAppend = whenToAppend;
+    public static void setWordToAppendAfter(String wordToAppendAfter) {
+        BooleansForSettings.wordToAppendAfter = wordToAppendAfter;
     }
 
     public static boolean isAppendOrNot() {
