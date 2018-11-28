@@ -7,6 +7,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+// add library?
+// JSON?
+// publishing?
+// Keep text on MainActivity?
+// Allow copying output?
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity Class";
@@ -26,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     }
     public void transformText(View transformButton) {
         hasStarted = true;
-        //Context context = getApplicationContext();
         EditText input = findViewById(R.id.Input);
         TextView output = findViewById(R.id.Output);
         Log.d(TAG, "transformText function ran");
@@ -47,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
         }
         BooleansForSettings.setOutput(BooleansForSettings.getToModify());
         output.setText(BooleansForSettings.getOutput());
+    }
+    public void decryptText(View decryptButton) {
+        hasStarted = true;Log.d(TAG, "decryptText function ran");
     }
     // Library causing failures?
     public void goToSettings(View v){
