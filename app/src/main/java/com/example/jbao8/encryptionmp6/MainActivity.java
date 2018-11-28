@@ -34,6 +34,17 @@ public class MainActivity extends AppCompatActivity {
         if (BooleansForSettings.isToCapitalizeAfterRotation()) {
             BooleansForSettings.setToModify(BooleansForSettings.getToModify().toUpperCase());
         }
+        if (BooleansForSettings.isAppendOrNot()) {
+            String[] words = BooleansForSettings.getToModify().split(" ");
+            String appendedString = "";
+            for (String word : words) {
+                if (word.equals(BooleansForSettings.getWordToAppendAfter())) {
+                    word = word + " " + BooleansForSettings.getToAppend();
+                }
+                appendedString = appendedString + " " + word;
+            }
+            BooleansForSettings.setToModify(appendedString);
+        }
         BooleansForSettings.setOutput(BooleansForSettings.getToModify());
         output.setText(BooleansForSettings.getOutput());
     }

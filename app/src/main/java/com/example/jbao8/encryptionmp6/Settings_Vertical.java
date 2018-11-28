@@ -15,6 +15,7 @@ import org.w3c.dom.Text;
 public class Settings_Vertical extends AppCompatActivity {
     private final String TAG = "Settings_Vertical Class";
     private final int MIN_LENGTH_OF_INPUT = 5;
+    private final int MIN_LENGTH_OF_WORD = 1;
     private final int MAX_LENGTH_OF_INPUT = 10;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,13 +68,13 @@ public class Settings_Vertical extends AppCompatActivity {
                 errorToast.show();
                 return;
             }
-            if (appendAfterThisWord.getText().toString().length() < MIN_LENGTH_OF_INPUT
+            if (appendAfterThisWord.getText().toString().length() < MIN_LENGTH_OF_WORD
                     || appendAfterThisWord.getText().toString().length() > MAX_LENGTH_OF_INPUT) {
                 Log.d(TAG, "invalid word to append after string");
                 int duration = Toast.LENGTH_SHORT;
                 Context context = getApplicationContext();
                 Toast errorToast = Toast.makeText(context, "word to append after must have" +
-                        " length between 5 and 10", duration);
+                        " length between 1 and 10", duration);
                 errorToast.show();
                 return;
             }
