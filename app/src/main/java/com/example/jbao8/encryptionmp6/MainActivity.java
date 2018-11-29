@@ -65,41 +65,28 @@ public class MainActivity extends AppCompatActivity {
                 errorToast.show();
                 return;
             }
-            BooleansForSettings.setToModify(toReturn.toString());
+            BooleansForSettings.setToModify(new String(toReturn));
         }
         BooleansForSettings.setOutput(BooleansForSettings.getToModify());
         output.setText(BooleansForSettings.getOutput());
-
-
-//        String url = "http://labs.bible.org/api/?passage=John%203:16&type=json";
-//        Log.d(TAG, "called getExampleText");
-//        try {
-//            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-//                    Request.Method.GET,
-//                    url,
-//                    null,
-//                    new Response.Listener<JSONObject>() {
-//                        @Override
-//                        public void onResponse(final JSONObject response) {
-//                            Log.d(TAG, response.toString());
-//                        }
-//                    }, new Response.ErrorListener() {
-//                @Override
-//                public void onErrorResponse(final VolleyError error) {
-//                    Log.e(TAG, error.toString());
-//                }
-//            });
-//            jsonObjectRequest.setShouldCache(false);
-//            requestQueue.add(jsonObjectRequest);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
     }
     public void decryptText(View decryptButton) {
         Log.d(TAG, "decryptText function ran");
         EditText input = findViewById(R.id.Input);
         TextView output = findViewById(R.id.Output);
         BooleansForSettings.setToModify(input.getText().toString());
+        if (BooleansForSettings.isRotateOrNot()) {
+            char[] toReturn = BooleansForSettings.getToModify().toCharArray();
+            toReturn = Encrypt.decrypter(toReturn, BooleansForSettings.getShiftBy());
+            if (toReturn == null) {
+                int duration = Toast.LENGTH_SHORT;
+                Context context = getApplicationContext();
+                Toast errorToast = Toast.makeText(context, "Input broke rotate.", duration);
+                errorToast.show();
+                return;
+            }
+            BooleansForSettings.setToModify(new String(toReturn));
+        }
         if (BooleansForSettings.isToCapitalizeAfterRotation()) {
             BooleansForSettings.setToModify(BooleansForSettings.getToModify().toLowerCase());
         }
@@ -170,35 +157,5 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        try {
-//            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-//                    Request.Method.GET,
-//                    url,
-//                    null,
-//                    new Response.Listener<JSONObject>() {
-//                        @Override
-//                        public void onResponse(final JSONObject response) {
-//                            Log.d(TAG, response.toString() + "JSON Object");
-//                            EditText input = findViewById(R.id.Input);
-//                            try {
-//                                input.setText(response.get("text").toString());
-//                            } catch (Exception e) {
-//                                Log.d(TAG, e.toString());
-//                            }
-//                        }
-//                    }, new Response.ErrorListener() {
-//                @Override
-//                public void onErrorResponse(final VolleyError error) {
-//                    Log.w(TAG, error.toString());
-//                    Context context = getApplicationContext();
-//                    int duration = Toast.LENGTH_LONG;
-//                    Toast printError = Toast.makeText(context, error.toString(), duration);
-//                    printError.show();
-//                }
-//            });
-//            requestQueue.add(jsonObjectRequest);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
     }
 }

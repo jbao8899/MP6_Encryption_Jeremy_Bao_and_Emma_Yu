@@ -28,24 +28,6 @@ public class Settings extends AppCompatActivity {
             indicator.setText(R.string.currently_off);
         }
     }
-//    public void appendText(View appendButton) { // not working?
-//        EditText textToAppend = findViewById(R.id.textToAppend);
-//        EditText wordAfterWhichtoAppend = findViewById(R.id.wordAfterWhichtoAppend);
-//        TextView statusIndicatorForAppending = findViewById(R.id.statusIndicatorForAppending);
-//        if (BooleansForSettings.isAppendOrNot()) {
-//            BooleansForSettings.setAppendOrNot(false);
-//            statusIndicatorForAppending.setText(R.string.currently_off);
-//            BooleansForSettings.setToAppend("");
-//            BooleansForSettings.setWhenToAppend("");
-//            textToAppend.setText(R.string.what_to_append);
-//            wordAfterWhichtoAppend.setText(R.string.after_which_word);
-//        } else {
-//            BooleansForSettings.setAppendOrNot(true);
-//            statusIndicatorForAppending.setText(R.string.currently_on);
-//            BooleansForSettings.setToAppend(textToAppend.getText().toString());
-//            BooleansForSettings.setWhenToAppend(wordAfterWhichtoAppend.getText().toString());
-//        }
-//    }
     public void goToMain(View v) {
         Intent myIntent = new Intent(getBaseContext(), MainActivity.class);
         startActivity(myIntent);
