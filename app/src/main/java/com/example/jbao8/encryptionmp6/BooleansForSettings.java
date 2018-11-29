@@ -7,10 +7,21 @@ public class BooleansForSettings {
     private static boolean appendOrNot = false;
     private static String toModify = "";
     private static String output = "";
+    private static int shiftBy = 0;
+    private static boolean rotateOrNot = false;
+
+    public static boolean isRotateOrNot() {
+        return rotateOrNot;
+    }
+
+    public static void setRotateOrNot(boolean rotateOrNot) {
+        BooleansForSettings.rotateOrNot = rotateOrNot;
+    }
+
     public static String getOutput() {
         return output;
     }
-    private static int shiftBy = 0;
+
 
     public static int getShiftBy() {
         return shiftBy;
