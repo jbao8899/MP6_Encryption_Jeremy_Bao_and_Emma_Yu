@@ -10,6 +10,15 @@ public class BooleansForSettings {
     public static String getOutput() {
         return output;
     }
+    private static int shiftBy = 0;
+
+    public static int getShiftBy() {
+        return shiftBy;
+    }
+
+    public static void setShiftBy(int shiftBy) {
+        BooleansForSettings.shiftBy = shiftBy;
+    }
 
     public static void setOutput(String output) {
         BooleansForSettings.output = output;
