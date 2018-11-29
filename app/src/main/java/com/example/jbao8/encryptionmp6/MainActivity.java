@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         EditText input = findViewById(R.id.Input);
         TextView output = findViewById(R.id.Output);
         Log.d(TAG, "transformText function ran");
+        BooleansForSettings.setToModify(input.getText().toString());
         if (BooleansForSettings.isAppendOrNot()) {
             String[] words = BooleansForSettings.getToModify().split(" ");
             String appendedString = "";
@@ -51,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
             }
             BooleansForSettings.setToModify(appendedString);
         }
-        BooleansForSettings.setToModify(input.getText().toString());
         if (BooleansForSettings.isToCapitalizeAfterRotation()) {
             BooleansForSettings.setToModify(BooleansForSettings.getToModify().toUpperCase());
         }
@@ -133,7 +133,6 @@ public class MainActivity extends AppCompatActivity {
                             try{
                                 JSONObject contents = null;
                                 for (int i = 0; i < response.length() ; i++){
-                                    // Get current json object
                                     if (i == 0) {
                                         contents = response.getJSONObject(i);
                                         Log.d(TAG, "gotContents");
