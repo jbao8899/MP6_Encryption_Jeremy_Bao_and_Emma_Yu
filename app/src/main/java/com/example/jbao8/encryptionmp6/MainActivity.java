@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             String[] words = BooleansForSettings.getToModify().split(" ");
             String appendedString = "";
             for (String word : words) {
-                if (word.equals(BooleansForSettings.getWordToAppendAfter())) {
+                if (word.toLowerCase().equals(BooleansForSettings.getWordToAppendAfter().toLowerCase())) { // too long?
                     word = word + " " + BooleansForSettings.getToAppend();
                 }
                 appendedString = appendedString + " " + word;
@@ -65,7 +65,15 @@ public class MainActivity extends AppCompatActivity {
             String[] words = BooleansForSettings.getToModify().split(BooleansForSettings.getToAppend()); // too long?
             String stringWithAppendedRemoved = "";
             for (String word : words) {
-                stringWithAppendedRemoved = stringWithAppendedRemoved + word;
+                stringWithAppendedRemoved = stringWithAppendedRemoved + word.trim() + " ";
+            }
+            if (BooleansForSettings.isToCapitalizeAfterRotation()) {
+                words = stringWithAppendedRemoved.split(BooleansForSettings.getToAppend().toLowerCase());
+                stringWithAppendedRemoved = "";
+                for (String word : words) { // deals with case where original appended string
+                    // had uppercase letters, which were turned to lowercase by previous block of code.
+                    stringWithAppendedRemoved = stringWithAppendedRemoved + word.trim() + " ";
+                }
             }
             BooleansForSettings.setToModify(stringWithAppendedRemoved);
         }
