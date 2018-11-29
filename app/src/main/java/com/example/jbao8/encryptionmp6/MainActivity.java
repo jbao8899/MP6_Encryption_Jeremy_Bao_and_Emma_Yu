@@ -20,11 +20,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-// add library?
-// JSON?
-// publishing?
-// Keep text on MainActivity?
 
+//Got Bible passages from https://bible.org/
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity Class";
     private static RequestQueue requestQueue;
@@ -120,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(myIntent);
     }
     public void getExampleText(View apiButton) {
-        String url = "http://labs.bible.org/api/?passage=John%203:16&type=json";
+        String url = "http://labs.bible.org/api/?passage=random&type=json";
         Log.d(TAG, "called getExampleText");
         try {
             JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
