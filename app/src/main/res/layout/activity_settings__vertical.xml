@@ -65,6 +65,7 @@
         android:id="@+id/rotateButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="toggleRotate"
         android:text="@string/encrypt_input_with_simple_cipher" />
 
     <TextView

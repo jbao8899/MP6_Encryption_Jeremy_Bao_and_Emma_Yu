@@ -10,13 +10,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
 
 public class Settings_Vertical extends AppCompatActivity {
     private final String TAG = "Settings_Vertical Class";
     private final int MIN_LENGTH_OF_INPUT = 5;
     private final int MIN_LENGTH_OF_WORD = 1;
     private final int MAX_LENGTH_OF_INPUT = 10;
+    /** Sets the minimum shift that the encrypter and decrypter need to handle.
+     *
+     */
+    public static final int MIN_SHIFT = -1024;
+
+    /** Sets the maximum shift that the encrypter and decrypter need to handle.
+     *
+     */
+    public static final int MAX_SHIFT = 1024;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "have switched to Settings_Vertical activity");
@@ -39,6 +47,14 @@ public class Settings_Vertical extends AppCompatActivity {
             appendIndicator.setText(R.string.currently_off);
             whatToAppend.setText(R.string.what_to_append);
             appendFollowingThisWord.setText(R.string.after_which_word);
+        }
+        TextView rotateOrNot = findViewById(R.id.rotationIndicator);
+        EditText howMuchToRotate = findViewById(R.id.howMuchToRotate);
+        if (BooleansForSettings.isRotateOrNot()) {
+            rotateOrNot.setText(R.string.currently_on);
+            howMuchToRotate.setText(Integer.toString(BooleansForSettings.getShiftBy()));
+        } else {
+            rotateOrNot.setText(R.string.currently_off);
         }
     }
     public void toggleUpperCase(View transformButton) {
@@ -89,6 +105,41 @@ public class Settings_Vertical extends AppCompatActivity {
             appendAfterThisWord.setText(R.string.after_which_word);
             BooleansForSettings.setWordToAppendAfter("");
             indicator.setText(R.string.currently_off);
+        }
+    }
+    public void toggleRotate(View rotateButton) {
+        Log.d(TAG,"toggleRotate has run");
+        TextView indicator = findViewById(R.id.rotationIndicator);
+        EditText howMuchToRotate = findViewById(R.id.howMuchToRotate);
+        if (BooleansForSettings.isRotateOrNot()) {
+            BooleansForSettings.setShiftBy(0);
+            BooleansForSettings.setRotateOrNot(false);
+            indicator.setText(R.string.currently_off);
+            howMuchToRotate.setText(R.string.how_much_to_rotate_text_1024_to_1024);
+        } else {
+            BooleansForSettings.setRotateOrNot(true);
+            int shift = 0;
+            try {
+                shift = Integer.parseInt(howMuchToRotate.getText().toString());
+            } catch (Exception e) {
+                Log.d(TAG, "bad shift length");
+                int duration = Toast.LENGTH_SHORT;
+                Context context = getApplicationContext();
+                Toast errorToast = Toast.makeText(context, "shift must be a number", duration);
+                errorToast.show();
+                return;
+            }
+            if (shift < MIN_SHIFT || shift > MAX_SHIFT) {
+                Log.d(TAG, "shift must be between -1024 and 1024");
+                int duration = Toast.LENGTH_SHORT;
+                Context context = getApplicationContext();
+                Toast errorToast = Toast.makeText(context, "shift must be between"
+                        + "-1024 and 1024", duration);
+                errorToast.show();
+                return;
+            }
+            BooleansForSettings.setShiftBy(shift);
+            indicator.setText(R.string.currently_on);
         }
     }
     public void goToMain(View v) {
