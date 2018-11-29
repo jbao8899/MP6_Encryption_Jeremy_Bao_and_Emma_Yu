@@ -65,9 +65,17 @@ public class Encrypt {
                 return null;
             }
         }
+        String unchanged = "";
+        if (BooleansForSettings.isLeaveSomeUnchanged()) {
+            unchanged = BooleansForSettings.getToNotRotate();
+        }
 
         char[] transformed = new char[line.length];
         for (int j = 0; j < line.length; j++) {
+            if (unchanged.contains(Character.toString(line[j]))) {
+                transformed[j] = line[j];
+                continue;
+            }
             int v = ((line[j] - TRANSFORM_START) + shift) % TRANSFORM_MODULUS;
             if (v < 0) {
                 transformed[j] = (char) (v + TRANSFORM_END + 1);

@@ -56,6 +56,14 @@ public class Settings_Vertical extends AppCompatActivity {
         } else {
             rotateOrNot.setText(R.string.currently_off);
         }
+        TextView maintainIndicator = findViewById(R.id.maintainIndicator);
+        EditText charsToNotRotate = findViewById(R.id.whatNotToRotate);
+        if (BooleansForSettings.isLeaveSomeUnchanged()) {
+            maintainIndicator.setText(R.string.currently_on);
+            charsToNotRotate.setText(BooleansForSettings.getToNotRotate());
+        } else {
+            maintainIndicator.setText(R.string.currently_off);
+        }
     }
     public void toggleUpperCase(View transformButton) {
         Log.d(TAG, "toggleUpperCase has run");
@@ -139,6 +147,29 @@ public class Settings_Vertical extends AppCompatActivity {
                 return;
             }
             BooleansForSettings.setShiftBy(shift);
+            indicator.setText(R.string.currently_on);
+        }
+    }
+    public void doNotRotateSomeCharacters(View clawButton) {
+        Log.d(TAG,"doNotRotateSomeCharacters ran");
+        TextView indicator = findViewById(R.id.maintainIndicator);
+        EditText toNotChange = findViewById(R.id.whatNotToRotate);
+        if (!BooleansForSettings.isRotateOrNot()) {
+            int duration = Toast.LENGTH_SHORT;
+            Context context = getApplicationContext();
+            Toast errorToast = Toast.makeText(context, "Must be rotating to not"
+                    + "rotate some characters", duration);
+            errorToast.show();
+            return;
+        }
+        if (BooleansForSettings.isLeaveSomeUnchanged()) {
+            BooleansForSettings.setLeaveSomeUnchanged(false);
+            indicator.setText(R.string.currently_off);
+            toNotChange.setText(R.string.which_characters_should_be_left_unchanged);
+            BooleansForSettings.setToNotRotate("");
+        } else {
+            BooleansForSettings.setLeaveSomeUnchanged(true);
+            BooleansForSettings.setToNotRotate(toNotChange.getText().toString());
             indicator.setText(R.string.currently_on);
         }
     }

@@ -9,6 +9,24 @@ public class BooleansForSettings {
     private static String output = "";
     private static int shiftBy = 0;
     private static boolean rotateOrNot = false;
+    private static String toNotRotate = "";
+    private static boolean leaveSomeUnchanged = false;
+
+    public static boolean isLeaveSomeUnchanged() {
+        return leaveSomeUnchanged;
+    }
+
+    public static void setLeaveSomeUnchanged(boolean leaveSomeUnchanged) {
+        BooleansForSettings.leaveSomeUnchanged = leaveSomeUnchanged;
+    }
+
+    public static String getToNotRotate() {
+        return toNotRotate;
+    }
+
+    public static void setToNotRotate(String toNotRotate) {
+        BooleansForSettings.toNotRotate = toNotRotate;
+    }
 
     public static boolean isRotateOrNot() {
         return rotateOrNot;

@@ -11,14 +11,14 @@
         android:id="@+id/settingsTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/settings"
         android:gravity="center_horizontal"
-        android:textSize="36sp" />
+        android:text="@string/settings"
+        android:textSize="28sp" />
 
     <Button
         android:id="@+id/capitalize"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:onClick="toggleUpperCase"
         android:text="@string/make_text_uppercase" />
 
@@ -26,14 +26,14 @@
         android:id="@+id/capIndicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/currently_off"
         android:gravity="center_horizontal"
-        android:textSize="24sp" />
+        android:text="@string/currently_off"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/appendButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:onClick="toggleAppendStringToWord"
         android:text="@string/append_string_to_word" />
 
@@ -41,9 +41,9 @@
         android:id="@+id/appendingIndicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/currently_off"
         android:gravity="center_horizontal"
-        android:textSize="24sp" />
+        android:text="@string/currently_off"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/whatToAppend"
@@ -51,7 +51,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/what_to_append" />
+        android:text="@string/what_to_append"
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/appendFollowingThisWord"
@@ -59,12 +60,13 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/after_which_word" />
+        android:text="@string/after_which_word"
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/rotateButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:onClick="toggleRotate"
         android:text="@string/encrypt_input_with_simple_cipher" />
 
@@ -72,9 +74,9 @@
         android:id="@+id/rotationIndicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/currently_off"
         android:gravity="center_horizontal"
-        android:textSize="24sp" />
+        android:text="@string/currently_off"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/howMuchToRotate"
@@ -82,12 +84,37 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="numberSigned"
-        android:text="@string/how_much_to_rotate_text_1024_to_1024" />
+        android:text="@string/how_much_to_rotate_text_1024_to_1024"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/clawCode"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:onClick="doNotRotateSomeCharacters"
+        android:text="@string/leave_some_characters_unchanged" />
+
+    <TextView
+        android:id="@+id/maintainIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/currently_off"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/whatNotToRotate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/which_characters_should_be_left_unchanged"
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/goToMain"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:onClick="goToMain"
         android:text="@string/go_to_main_screen" />
 
