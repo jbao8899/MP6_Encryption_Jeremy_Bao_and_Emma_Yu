@@ -11,7 +11,6 @@ import android.widget.TextView;
 // JSON?
 // publishing?
 // Keep text on MainActivity?
-// Allow copying output?
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity Class";
