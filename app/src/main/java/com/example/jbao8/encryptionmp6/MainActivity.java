@@ -1,12 +1,29 @@
 package com.example.jbao8.encryptionmp6;
 
+import android.content.Context;
 import android.content.Intent;
+import android.nfc.Tag;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.JsonParser;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 // add library?
 // JSON?
 // publishing?
@@ -14,22 +31,16 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity Class";
-    private boolean hasStarted = false;
+    private static RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestQueue = Volley.newRequestQueue(this);
         Log.d(TAG,"Main Activity started");
-        if (hasStarted) {
-            EditText input = findViewById(R.id.Input);
-            input.setText(BooleansForSettings.getToModify());
-            TextView output = findViewById(R.id.Output);
-            output.setText(BooleansForSettings.getOutput());
-        }
         setContentView(R.layout.activity_main);
     }
     public void transformText(View transformButton) {
-        hasStarted = true;
         EditText input = findViewById(R.id.Input);
         TextView output = findViewById(R.id.Output);
         Log.d(TAG, "transformText function ran");
@@ -50,9 +61,33 @@ public class MainActivity extends AppCompatActivity {
         }
         BooleansForSettings.setOutput(BooleansForSettings.getToModify());
         output.setText(BooleansForSettings.getOutput());
+
+
+//        String url = "http://labs.bible.org/api/?passage=John%203:16&type=json";
+//        Log.d(TAG, "called getExampleText");
+//        try {
+//            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+//                    Request.Method.GET,
+//                    url,
+//                    null,
+//                    new Response.Listener<JSONObject>() {
+//                        @Override
+//                        public void onResponse(final JSONObject response) {
+//                            Log.d(TAG, response.toString());
+//                        }
+//                    }, new Response.ErrorListener() {
+//                @Override
+//                public void onErrorResponse(final VolleyError error) {
+//                    Log.e(TAG, error.toString());
+//                }
+//            });
+//            jsonObjectRequest.setShouldCache(false);
+//            requestQueue.add(jsonObjectRequest);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
     public void decryptText(View decryptButton) {
-        hasStarted = true;
         Log.d(TAG, "decryptText function ran");
         EditText input = findViewById(R.id.Input);
         TextView output = findViewById(R.id.Output);
@@ -81,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
     }
     // Library causing failures?
     public void goToSettings(View v){
-        hasStarted = true;
         Log.d(TAG,"goToSettings has run");
         EditText input = findViewById(R.id.Input);
         BooleansForSettings.setToModify(input.getText().toString());
@@ -89,5 +123,74 @@ public class MainActivity extends AppCompatActivity {
         BooleansForSettings.setOutput(output.getText().toString());
         Intent myIntent = new Intent(getBaseContext(), Settings_Vertical.class); // not working?
         startActivity(myIntent);
+    }
+    public void getExampleText(View apiButton) {
+        String url = "http://labs.bible.org/api/?passage=John%203:16&type=json";
+        Log.d(TAG, "called getExampleText");
+        try {
+            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                    Request.Method.GET,
+                    url,
+                    null,
+                    new Response.Listener<JSONArray>() {
+                        @Override
+                        public void onResponse(JSONArray response) {
+                            try{
+                                JSONObject contents = null;
+                                for (int i = 0; i < response.length() ; i++){
+                                    // Get current json object
+                                    if (i == 0) {
+                                        contents = response.getJSONObject(i);
+                                        Log.d(TAG, "gotContents");
+                                    }
+                                }
+                                EditText input = findViewById(R.id.Input);
+                                input.setText(contents.get("text").toString());
+                            }catch (JSONException e){
+                                e.printStackTrace();
+                            }
+                        }
+                    },
+                    new Response.ErrorListener(){
+                        @Override
+                        public void onErrorResponse(VolleyError error){
+                            Log.d(TAG, error.toString() + " failed within ErrorListener");
+                        }
+                    }
+            );
+            requestQueue.add(jsonArrayRequest);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        try {
+//            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+//                    Request.Method.GET,
+//                    url,
+//                    null,
+//                    new Response.Listener<JSONObject>() {
+//                        @Override
+//                        public void onResponse(final JSONObject response) {
+//                            Log.d(TAG, response.toString() + "JSON Object");
+//                            EditText input = findViewById(R.id.Input);
+//                            try {
+//                                input.setText(response.get("text").toString());
+//                            } catch (Exception e) {
+//                                Log.d(TAG, e.toString());
+//                            }
+//                        }
+//                    }, new Response.ErrorListener() {
+//                @Override
+//                public void onErrorResponse(final VolleyError error) {
+//                    Log.w(TAG, error.toString());
+//                    Context context = getApplicationContext();
+//                    int duration = Toast.LENGTH_LONG;
+//                    Toast printError = Toast.makeText(context, error.toString(), duration);
+//                    printError.show();
+//                }
+//            });
+//            requestQueue.add(jsonObjectRequest);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 }
