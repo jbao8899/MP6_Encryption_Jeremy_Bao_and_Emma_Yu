@@ -1,10 +1,12 @@
 package com.example.jbao8.encryptionmp6;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -38,10 +40,6 @@ public class MainActivity extends AppCompatActivity {
         EditText input = findViewById(R.id.Input);
         TextView output = findViewById(R.id.Output);
         Log.d(TAG, "transformText function ran");
-        BooleansForSettings.setToModify(input.getText().toString());
-        if (BooleansForSettings.isToCapitalizeAfterRotation()) {
-            BooleansForSettings.setToModify(BooleansForSettings.getToModify().toUpperCase());
-        }
         if (BooleansForSettings.isAppendOrNot()) {
             String[] words = BooleansForSettings.getToModify().split(" ");
             String appendedString = "";
@@ -52,6 +50,22 @@ public class MainActivity extends AppCompatActivity {
                 appendedString = appendedString + " " + word;
             }
             BooleansForSettings.setToModify(appendedString);
+        }
+        BooleansForSettings.setToModify(input.getText().toString());
+        if (BooleansForSettings.isToCapitalizeAfterRotation()) {
+            BooleansForSettings.setToModify(BooleansForSettings.getToModify().toUpperCase());
+        }
+        if (BooleansForSettings.isRotateOrNot()) {
+            char[] toReturn = BooleansForSettings.getToModify().toCharArray();
+            toReturn = Encrypt.encrypter(toReturn, BooleansForSettings.getShiftBy());
+            if (toReturn == null) {
+                int duration = Toast.LENGTH_SHORT;
+                Context context = getApplicationContext();
+                Toast errorToast = Toast.makeText(context, "Input broke rotate.", duration);
+                errorToast.show();
+                return;
+            }
+            BooleansForSettings.setToModify(toReturn.toString());
         }
         BooleansForSettings.setOutput(BooleansForSettings.getToModify());
         output.setText(BooleansForSettings.getOutput());
