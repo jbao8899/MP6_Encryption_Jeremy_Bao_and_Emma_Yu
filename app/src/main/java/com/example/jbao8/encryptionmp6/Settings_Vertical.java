@@ -16,13 +16,13 @@ public class Settings_Vertical extends AppCompatActivity {
     private final int MIN_LENGTH_OF_INPUT = 5;
     private final int MIN_LENGTH_OF_WORD = 1;
     private final int MAX_LENGTH_OF_INPUT = 10;
-    /** Sets the minimum shift that the encrypter and decrypter need to handle.
-     *
+    /**
+     * Sets the minimum shift that the encrypter and decrypter need to handle.
      */
     public static final int MIN_SHIFT = -1024;
 
-    /** Sets the maximum shift that the encrypter and decrypter need to handle.
-     *
+    /**
+     * Sets the maximum shift that the encrypter and decrypter need to handle.
      */
     public static final int MAX_SHIFT = 1024;
     @Override
