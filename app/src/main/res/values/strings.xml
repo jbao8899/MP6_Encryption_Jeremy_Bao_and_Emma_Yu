@@ -19,6 +19,6 @@
     <string name="how_much_to_rotate_text_1024_to_1024">How much to rotate text (-1024 to 1024)?</string>
     <string name="decrypt">Decrypt</string>
     <string name="get_example_text">get example text</string>
-    <string name="leave_some_characters_unchanged">Leave some characters unchanged</string>
+    <string name="leave_some_characters_unchanged">Leave characters unchanged (may scramble results)</string>
     <string name="which_characters_should_be_left_unchanged">Which characters should be left unchanged?</string>
 </resources>

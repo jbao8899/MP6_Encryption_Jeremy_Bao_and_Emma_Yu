@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             if (toReturn == null) {
                 int duration = Toast.LENGTH_SHORT;
                 Context context = getApplicationContext();
-                Toast errorToast = Toast.makeText(context, "Input broke rotate.", duration);
+                Toast errorToast = Toast.makeText(context, "Input contained illegal characters", duration);
                 errorToast.show();
                 return;
             }
@@ -146,13 +146,14 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError e) {
                             e.printStackTrace();
-                            Log.d(TAG, e.toString() + " failed within ErrorListener");
+                            Log.e(TAG, e.toString() + " failed within ErrorListener");
                         }
                     }
             );
             requestQueue.add(jsonArrayRequest);
         } catch (Exception e) {
-            Log.d(TAG, e.toString());
+            e.printStackTrace();
+            Log.e(TAG, e.toString());
         }
     }
 }

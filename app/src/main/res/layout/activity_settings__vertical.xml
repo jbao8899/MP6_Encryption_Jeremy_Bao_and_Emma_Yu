@@ -90,7 +90,7 @@
     <Button
         android:id="@+id/clawCode"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:onClick="doNotRotateSomeCharacters"
         android:text="@string/leave_some_characters_unchanged" />
 
