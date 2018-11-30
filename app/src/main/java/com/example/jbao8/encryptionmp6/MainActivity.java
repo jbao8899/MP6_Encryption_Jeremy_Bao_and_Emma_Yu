@@ -144,8 +144,9 @@ public class MainActivity extends AppCompatActivity {
                     },
                     new Response.ErrorListener(){
                         @Override
-                        public void onErrorResponse(VolleyError error){
-                            Log.d(TAG, error.toString() + " failed within ErrorListener");
+                        public void onErrorResponse(VolleyError e) {
+                            e.printStackTrace();
+                            Log.d(TAG, e.toString() + " failed within ErrorListener");
                         }
                     }
             );
