@@ -62,7 +62,7 @@ public class Encrypt {
 
         for (int i = 0; i < line.length; i++) {
             if (line[i] < TRANSFORM_START || line[i] > TRANSFORM_END) {
-                return null;
+                line[i] = ' ';
             }
         }
         String unchanged = "";
