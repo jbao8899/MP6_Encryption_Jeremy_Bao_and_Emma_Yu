@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
             );
             requestQueue.add(jsonArrayRequest);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.d(TAG, e.toString());
         }
     }
 }
