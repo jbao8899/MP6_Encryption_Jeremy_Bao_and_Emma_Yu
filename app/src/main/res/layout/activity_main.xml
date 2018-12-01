@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorAccent"
     tools:context=".MainActivity">
 
     <Button
@@ -35,7 +36,9 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/output"
+        android:textColor="@color/colorPrimaryDark"
         android:textIsSelectable="true"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,6 +56,7 @@
         android:inputType="textMultiLine"
         android:scrollbars="vertical"
         android:text="@string/input"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,6 +64,7 @@
 
     <Button
         android:id="@+id/Settings"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -68,15 +73,19 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="180dp"
+        android:background="@color/colorAccent"
         android:onClick="goToSettings"
         android:text="@string/settings"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:style="@style/Widget.AppCompat.Button.Colored" />
 
     <Button
         android:id="@+id/Decrypt"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="148dp"
@@ -85,8 +94,10 @@
         android:layout_marginEnd="148dp"
         android:layout_marginRight="148dp"
         android:layout_marginBottom="180dp"
+        android:background="@color/colorAccent"
         android:onClick="decryptText"
         android:text="@string/decrypt"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/Output"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,19 +105,22 @@
 
     <Button
         android:id="@+id/ClearInput"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
         android:onClick="clearInput"
         android:text="Clear input"
-        tools:layout_editor_absoluteX="154dp"
-        tools:layout_editor_absoluteY="384dp"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:style="@style/Widget.AppCompat.Button.Colored" />
 
     <Button
         android:id="@+id/getExampleText"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="148dp"
@@ -114,10 +128,14 @@
         android:layout_marginTop="134dp"
         android:layout_marginEnd="148dp"
         android:layout_marginRight="148dp"
+        android:background="@color/colorAccent"
+        android:fadingEdge="none"
         android:onClick="getExampleText"
         android:text="@string/get_example_text"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/EncryptButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Input" />
+        app:layout_constraintTop_toBottomOf="@+id/Input"
+        tools:style="@android:style/Widget.Holo.Button.Borderless" />
 </android.support.constraint.ConstraintLayout>
