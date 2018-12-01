@@ -72,7 +72,7 @@ public class Encrypt {
 
         char[] transformed = new char[line.length];
         for (int j = 0; j < line.length; j++) {
-            if (unchanged.contains(Character.toString(line[j]))) {
+            if (unchanged.contains(Character.toString(line[j]).toLowerCase())) {
                 transformed[j] = line[j];
                 continue;
             }
