@@ -116,6 +116,10 @@ public class MainActivity extends AppCompatActivity {
         Intent myIntent = new Intent(getBaseContext(), Settings_Vertical.class); // not working?
         startActivity(myIntent);
     }
+    public void clearInput(View clearInputButton) {
+        EditText input = findViewById(R.id.Input);
+        input.setText("");
+    }
     public void getExampleText(View apiButton) {
         String url = "http://labs.bible.org/api/?passage=random&type=json";
         Log.d(TAG, "called getExampleText");

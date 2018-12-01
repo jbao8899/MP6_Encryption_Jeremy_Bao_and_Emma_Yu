@@ -43,17 +43,15 @@
 
     <EditText
         android:id="@+id/Input"
-        android:scrollbars = "vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
         android:layout_marginBottom="480dp"
         android:ems="10"
         android:inputType="textMultiLine"
+        android:scrollbars="vertical"
         android:text="@string/input"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +76,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/decrypt"
+        android:id="@+id/Decrypt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="148dp"
@@ -93,6 +91,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Settings" />
+
+    <Button
+        android:id="@+id/ClearInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="clearInput"
+        android:text="Clear input"
+        tools:layout_editor_absoluteX="154dp"
+        tools:layout_editor_absoluteY="384dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/getExampleText"
