@@ -154,12 +154,14 @@ public class Settings_Vertical extends AppCompatActivity {
         Log.d(TAG,"doNotRotateSomeCharacters ran");
         TextView indicator = findViewById(R.id.maintainIndicator);
         EditText toNotChange = findViewById(R.id.whatNotToRotate);
+        Log.d(TAG, Boolean.toString(BooleansForSettings.isRotateOrNot()));
         if (!BooleansForSettings.isRotateOrNot()) {
             int duration = Toast.LENGTH_SHORT;
             Context context = getApplicationContext();
             Toast errorToast = Toast.makeText(context, "Must be rotating to not"
                     + "rotate some characters", duration);
             errorToast.show();
+            Log.d(TAG, "prevented from clicking");
             return;
         }
         if (BooleansForSettings.isLeaveSomeUnchanged()) {
