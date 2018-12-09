@@ -133,12 +133,6 @@ public class MainActivity extends AppCompatActivity {
                         public void onResponse(JSONArray response) {
                             try{
                                 JSONObject contents = response.getJSONObject(0);
-//                                for (int i = 0; i < response.length() ; i++){
-//                                    if (i == 0) {
-//                                        contents = response.getJSONObject(i);
-//                                        Log.d(TAG, "gotContents");
-//                                    }
-//                                }
                                 EditText input = findViewById(R.id.Input);
                                 input.setText(contents.get("text").toString());
                             }catch (JSONException e){
